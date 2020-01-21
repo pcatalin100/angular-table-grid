@@ -1,0 +1,32 @@
+[
+    {
+        "id": 1,
+        "name": "BMW",
+        "type": "A6",
+        "color": "bleen"
+    },
+    {
+        "id": 2,
+        "name": "BMW",
+        "type": "A5",
+        "color": "red"
+    },
+    {
+        "id": 3,
+        "name": "Audi",
+        "type": "something",
+        "color": "yellow"
+    },
+    {
+        "id": 4,
+        "name": "BMW",
+        "type": "A7",
+        "color": "green"
+    },
+    {
+        "id": 5,
+        "name": "Opel",
+        "type": "F32",
+        "color": "black"
+    }
+]
