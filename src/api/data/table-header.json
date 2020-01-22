@@ -1,6 +1,30 @@
-{
-    "id": "ID",
-    "name": "Name",
-    "type": "Type",
-    "color": "Color"
-}
+[
+    {
+        "key": "id",
+        "label": "ID"
+    },
+    {
+        "key": "name",
+        "label": "Name"
+    },
+    {
+        "key": "type",
+        "label": "Type"
+    },
+    {
+        "key": "color",
+        "label": "Color"
+    },
+    {
+        "key": "fuel",
+        "label": "Fuel type"
+    },
+    {
+        "key": "country",
+        "label": "Country of origin"
+    },
+    {
+        "key": "horsePower",
+        "label": "Horse Power"
+    }
+]

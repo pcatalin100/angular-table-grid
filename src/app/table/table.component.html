@@ -1,1 +1,44 @@
-<p>table works!</p>
+<!-- <div class="table-responsive withscroll">
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>{{headerContent.id}}</th>
+                <th>{{headerContent.name}}</th>
+                <th>{{headerContent.type}}</th>
+                <th>{{headerContent.color}}</th>
+                <th >{{headerContent.fuel}}</th>
+                <th>{{headerContent.country}}</th>
+                <th>{{headerContent.horse_power}}</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let row of content">
+                <td>{{row.id}}</td>
+                <td>{{row.name}}</td>
+                <td>{{row.type}}</td>
+                <td>{{row.color}}</td>
+                <td>{{row.fuel}}</td>
+                <td>{{row.country}}</td>
+                <td>{{row.horse_power}}</td>
+            </tr>
+        </tbody>
+    </table>
+</div> -->
+<div class="with-scroll">
+    <div class="resp-table">
+        <div class="resp-table-header">
+            <div class="table-header-cell" *ngFor="let row of headerContent">{{row.label}}</div>
+        </div>
+        <div class="resp-table-body">
+            <div class="resp-table-row" *ngFor="let row of content" (click)="rowClicked(row)" [ngClass]="{'selected': row.isSelected === true}">
+                <div class="table-body-cell">{{row.id}}</div>
+                <div class="table-body-cell">{{row.name}}</div>
+                <div class="table-body-cell">{{row.type}}</div>
+                <div class="table-body-cell">{{row.color}}</div>
+                <div class="table-body-cell" *ngIf="isActive === true">{{row.fuel}}</div>
+                <div class="table-body-cell" *ngIf="isActive === true">{{row.country}}</div>
+                <div class="table-body-cell" *ngIf="isActive === true">{{row.horsePower}}</div>
+            </div>
+        </div>
+    </div>
+</div>

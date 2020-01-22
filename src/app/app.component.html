@@ -1,2 +1,5 @@
-<app-table></app-table>
+<button class="btn btn-primary" (click)="removeRows()">Remove</button>
+<button class="btn btn-primary" (click)="showDetails()">Show details</button>
+    
+<app-table [headerContent]="headerContent" [content]="content" [isActive]="isActive"></app-table>
 <p>Hi</p>

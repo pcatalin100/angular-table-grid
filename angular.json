@@ -5,7 +5,11 @@
   "projects": {
     "table-project": {
       "projectType": "application",
-      "schematics": {},
+      "schematics": {
+        "@schematics/angular:component": {
+          "style": "scss"
+        }
+      },
       "root": "",
       "sourceRoot": "src",
       "prefix": "app",
@@ -25,7 +29,7 @@
               "src/api"
             ],
             "styles": [
-              "src/styles.css",
+              "src/styles.scss",
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": []
