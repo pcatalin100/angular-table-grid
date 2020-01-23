@@ -15,10 +15,6 @@ export class TableComponent implements OnInit {
   }
 
   rowClicked(row: any) {
-    if (row.isSelected === false) {
-      row.isSelected = true;
-    } else {
-      row.isSelected = false;
-    }
+    row.isSelected = !row.isSelected
   }
 }
