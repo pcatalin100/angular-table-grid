@@ -18,3 +18,22 @@
         </tbody>
     </table>
 </div>
+
+<div class="with-scroll">
+    <div class="resp-table">
+        <div class="resp-table-header">
+            <div class="table-header-cell" *ngFor="let row of headerContent">{{row.label}}</div>
+        </div>
+        <div class="resp-table-body">
+            <div class="resp-table-row" *ngFor="let row of content" (click)="rowClicked(row)" [ngClass]="{'selected': row.isSelected === true}">
+                <div class="table-body-cell">{{row.id}}</div>
+                <div class="table-body-cell">{{row.name}}</div>
+                <div class="table-body-cell">{{row.type}}</div>
+                <div class="table-body-cell">{{row.color}}</div>
+                <div class="table-body-cell" *ngIf="isActive === true">{{row.fuel}}</div>
+                <div class="table-body-cell" *ngIf="isActive === true">{{row.country}}</div>
+                <div class="table-body-cell" *ngIf="isActive === true">{{row.horsePower}}</div>
+            </div>
+        </div>
+    </div>
+</div>

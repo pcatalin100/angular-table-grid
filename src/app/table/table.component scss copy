@@ -1,0 +1,56 @@
+.with-scroll {
+    height: 300px;
+    margin: auto;
+    width: 80%;
+    overflow: auto;
+    white-space: nowrap;
+
+    .resp-table {
+        border-collapse: collapse;
+        display: table;
+        width: 100%;
+
+        .resp-table-header {
+            display: table-header-group;
+            background-color: rgb(163, 163, 163);
+            font-weight: bold;
+            font-size: 15px;
+
+            .table-header-cell {
+                display: table-cell;
+                padding: 10px;
+                text-align: justify;
+                border: 0.5px solid rgb(224, 223, 223);
+            }
+        }
+
+        .resp-table-body {
+            display: table-row-group;
+
+            .resp-table-row {
+                display: table-row;
+                font-size: 15px;
+
+                .table-body-cell {
+                    display: table-cell;
+                    text-align: justify;
+                    padding: 10px;
+                    border: 0.5px solid rgb(185, 185, 185);
+                }
+            }
+
+            .resp-table-row:hover {
+                background-color: rgb(221, 221, 221);
+            }
+        }
+    }
+}
+.table-header{
+    background-color: rgb(163, 163, 163);
+}
+.table-row:hover {
+    background-color: rgb(221, 221, 221);
+}
+.selected{
+    background-color: rgb(221, 221, 221);
+}

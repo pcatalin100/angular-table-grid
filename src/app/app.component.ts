@@ -10,7 +10,7 @@ import { TableComponent } from './table/table.component';
 })
 export class AppComponent {
   @ViewChild(TableComponent, { static: false }) child: TableComponent;
-  isActive: boolean = false;
+  isActive: boolean = true;
   title = 'table-project';
   headerContent: IHeader[];
   content: IContent[];
@@ -24,7 +24,6 @@ export class AppComponent {
     this.getData.getTableContent().subscribe((res: IContent[]) => {
       this.content = res;
     });
-
   }
   removeRows() {
     this.content = this.content.filter( (row) => {
@@ -33,10 +32,6 @@ export class AppComponent {
   }
 
   showDetails(){
-    if(this.isActive === true){
-      this.isActive = false;
-    } else {
-      this.isActive = true;
-    }
+    this.isActive = !this.isActive;
   }
 }
