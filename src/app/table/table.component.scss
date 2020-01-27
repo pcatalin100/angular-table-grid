@@ -5,12 +5,18 @@
     overflow: auto;
     white-space: nowrap;
 }
-.table-header{
+
+.c9-table .table-header th {
+    position: sticky;
+    top: 0;
     background-color: rgb(163, 163, 163);
 }
+
+
 .table-row:hover {
     background-color: rgb(221, 221, 221);
 }
-.selected{
+
+.selected {
     background-color: rgb(221, 221, 221);
 }

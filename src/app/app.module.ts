@@ -4,15 +4,17 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
 import { TableComponent } from './table/table.component';
+import { SelectRowDirective } from './directives/select-row.directive';
 
 @NgModule({
   declarations: [
     AppComponent,
     TableComponent,
+    SelectRowDirective
   ],
   imports: [
     BrowserModule,
-    HttpClientModule
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

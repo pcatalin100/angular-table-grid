@@ -1,4 +1,23 @@
 <button class="btn btn-primary" (click)="removeRows()">Remove</button>
 <button class="btn btn-primary" (click)="showDetails()">Show details</button>
-    
-<app-table [headerContent]="headerContent" [content]="content" [isActive]="isActive"></app-table>
+
+<app-table [headerContent]="headerContent" [content]="content" [isActive]="isActive" [tableHeader]="tableHeader" [tableContent]="tableContent">
+    <ng-template #tableHeader>
+        <tr class="table-header">
+            <th class="table-header-cell" *ngFor="let row of headerContent">{{row.label}}</th>
+        </tr>
+    </ng-template>
+    <ng-template #tableContent>
+        <tr [appSelectRow]="row" class="table-row" *ngFor="let row of content" [ngClass]="{'selected': row.isSelected === true}">
+            <td class="table-body-cell">{{row.id}}</td>
+            <td class="table-body-cell">{{row.name}}</td>
+            <td class="table-body-cell">{{row.type}}</td>
+            <td class="table-body-cell">{{row.color}}</td>
+            <td class="table-body-cell" *ngIf="isActive === true">{{row.fuel}}</td>
+            <td class="table-body-cell" *ngIf="isActive === true">{{row.country}}</td>
+            <td class="table-body-cell" *ngIf="isActive === true">{{row.horsePower}}</td>
+        </tr>
+    </ng-template>
+
+
+</app-table>
