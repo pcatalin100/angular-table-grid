@@ -2,7 +2,6 @@ import { Component, ViewChild, Directive, HostListener, Input } from '@angular/c
 import { IHeader, IContent } from './interfaces/table';
 import { GetDataService } from './get-data.service';
 import { TableComponent } from './table/table.component';
-import { SelectRowDirective } from './directives/select-row.directive';
 
 @Component({
   selector: 'app-root',
@@ -27,12 +26,11 @@ export class AppComponent {
     });
   }
   removeRows() {
-    this.content = this.content.filter( (row) => {
+    this.content = this.content.filter((row) => {
       return row.isSelected === false;
     });
   }
-
-  showDetails(){
+  showDetails() {
     this.isActive = !this.isActive;
   }
 }

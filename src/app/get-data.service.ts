@@ -14,7 +14,6 @@ export class GetDataService {
 
   getHeaderContent(): Observable<IHeader[]> {
     return this.http.get<IHeader[]>(this.headerContent).pipe(
-      //tap(data => console.log("Data: " + JSON.stringify(data))),
       catchError(this.handleError)
     )
   }

@@ -6,8 +6,6 @@ import { Directive, Input, HostListener } from '@angular/core';
 export class SelectRowDirective {
   @Input('appSelectRow') row: any
   @HostListener('click', ['$event']) onClick(event){
-    console.log(this.row);
     this.row.isSelected = !this.row.isSelected;
   }
-
 }
