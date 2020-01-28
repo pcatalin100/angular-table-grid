@@ -4,7 +4,7 @@
             <ng-container *ngTemplateOutlet="tableHeader"></ng-container>
         </thead>
         <tbody>
-            <ng-container *ngTemplateOutlet="tableContent"></ng-container>
+            <ng-container [ngTemplateOutlet]="tableContent" *ngFor="let row of content" [ngTemplateOutletContext]="{row: row}"></ng-container>
         </tbody>
     </table>
 </div>
