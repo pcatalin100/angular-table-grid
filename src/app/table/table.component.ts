@@ -7,9 +7,6 @@ import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 
 })
 export class TableComponent implements OnInit {
-  @Input() headerContent;
-  @Input() content;
-  @Input() isActive;
   @Input() tableHeader;
   @Input() tableContent;
   constructor() { }
