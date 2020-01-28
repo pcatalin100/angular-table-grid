@@ -3,30 +3,101 @@
         "id": 1,
         "name": "BMW",
         "type": "A6",
-        "color": "bleen"
+        "color": "bleen",
+        "fuel": "Fuel 1",
+        "country": "Germany",
+        "horsePower": 255,
+        "isSelected": false
     },
     {
         "id": 2,
         "name": "BMW",
         "type": "A5",
-        "color": "red"
+        "color": "red",
+        "fuel": "Fuel 4",
+        "country": "Austria",
+        "horsePower": 243,
+        "isSelected": false
     },
     {
         "id": 3,
         "name": "Audi",
         "type": "something",
-        "color": "yellow"
+        "color": "yellow",
+        "fuel": "Fuel 1",
+        "country": "USA",
+        "horsePower": 278,
+        "isSelected": false
     },
     {
         "id": 4,
         "name": "BMW",
         "type": "A7",
-        "color": "green"
+        "color": "green",
+        "fuel": "Fuel 2",
+        "country": "France",
+        "horsePower": 263,
+        "isSelected": false
     },
     {
         "id": 5,
         "name": "Opel",
         "type": "F32",
-        "color": "black"
+        "color": "black",
+        "fuel": "Fuel 3",
+        "country": "UK",
+        "horsePower": 450,
+        "isSelected": false
+    },
+    {
+        "id": 6,
+        "name": "Dacia",
+        "type": "1300",
+        "color": "pink",
+        "fuel": "Fuel 2",
+        "country": "Romania",
+        "horsePower": 120,
+        "isSelected": false
+    },
+    {
+        "id": 7,
+        "name": "Mazda",
+        "type": "Q6",
+        "color": "green",
+        "fuel": "Fuel 1",
+        "country": "Spain",
+        "horsePower": 220,
+        "isSelected": false
+    },
+    {
+        "id": 8,
+        "name": "Opel",
+        "type": "M2",
+        "color": "red",
+        "fuel": "Fuel 2",
+        "country": "Spain",
+        "horsePower": 230,
+        "isSelected": false
+    },
+    {
+        "id": 9,
+        "name": "Toyota",
+        "type": "6A",
+        "color": "orange",
+        "fuel": "Fuel 2",
+        "country": "Japan",
+        "horsePower": 234,
+        "isSelected": false
+    },
+    {
+        "id": 10,
+        "name": "Subaru",
+        "type": "K8A",
+        "color": "blue",
+        "fuel": "Fuel 3",
+        "country": "Japan",
+        "horsePower": 250,
+        "isSelected": false
     }
+    
 ]

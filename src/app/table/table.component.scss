@@ -1,0 +1,21 @@
+.with-scroll {
+    height: 300px;
+    margin: auto;
+    width: 80%;
+    overflow: auto;
+    white-space: nowrap;
+}
+
+.c9-table .table-header th {
+    position: sticky;
+    top: 0;
+    background-color: rgb(163, 163, 163);
+}
+
+.table-row:hover {
+    background-color: rgb(221, 221, 221);
+}
+
+.selected {
+    background-color: rgb(221, 221, 221);
+}

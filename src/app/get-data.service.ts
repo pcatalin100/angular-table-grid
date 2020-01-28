@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError, tap } from 'rxjs/operators';
+import { IHeader, IContent } from './interfaces/table';
 
 @Injectable({
   providedIn: 'root'
@@ -11,14 +12,13 @@ export class GetDataService {
   private tableContent = 'api/data/table-content.json';
   constructor(private http: HttpClient) { }
 
-  getHeaderContent(): Observable<any> {
-    return this.http.get(this.headerContent).pipe(
-      //tap(data => console.log("Data: " + JSON.stringify(data))),
+  getHeaderContent(): Observable<IHeader[]> {
+    return this.http.get<IHeader[]>(this.headerContent).pipe(
       catchError(this.handleError)
     )
   }
-  getTableContent(): Observable<any> {
-    return this.http.get(this.tableContent).pipe(
+  getTableContent(): Observable<IContent[]> {
+    return this.http.get<IContent[]>(this.tableContent).pipe(
       catchError(this.handleError)
     );
   }
@@ -31,6 +31,5 @@ export class GetDataService {
     }
     console.error(errorMessage);
     return throwError(errorMessage);
-
   }
 }

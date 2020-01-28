@@ -1,1 +1,10 @@
-<p>table works!</p>
+<div class="c9-table table-responsive with-scroll mb-5">
+    <table class="table table-bordered">
+        <thead>
+            <ng-container *ngTemplateOutlet="tableHeader"></ng-container>
+        </thead>
+        <tbody>
+            <ng-container [ngTemplateOutlet]="tableContent" *ngFor="let row of content" [ngTemplateOutletContext]="{row: row}"></ng-container>
+        </tbody>
+    </table>
+</div>

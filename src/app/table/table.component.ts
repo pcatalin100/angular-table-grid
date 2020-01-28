@@ -1,25 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { GetDataService } from '../get-data.service';
-
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
-  styleUrls: ['./table.component.css']
+  styleUrls: ['./table.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class TableComponent implements OnInit {
-  content: any[] = []
-  constructor(private getData: GetDataService) { }
+  @Input() tableHeader;
+  @Input() tableContent;
+  @Input() content;
+  constructor() { }
 
-  ngOnInit() {
-    this.getData.getHeaderContent().subscribe({
-      next: data => {
-        console.log(data);
-      }
-    })
-    this.getData.getTableContent().subscribe((res: any) => {
-      this.content = res;
-      console.log(this.content);
-    })
-  }
-
+  ngOnInit() { }
 }
