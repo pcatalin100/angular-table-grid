@@ -14,6 +14,14 @@ export class AppComponent {
   title = 'table-project';
   headerContent: IHeader[];
   content: IContent[];
+  fixLeft = {
+    key: "name",
+    side: "left"
+  };
+  fixRight = {
+    key: "country",
+    side: "right"
+  }
   constructor(private getData: GetDataService) {
 
   }

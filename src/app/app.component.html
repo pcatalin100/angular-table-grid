@@ -3,12 +3,16 @@
 <app-table [tableHeader]="tableHeader" [tableContent]="tableContent" [content]="content">
     <ng-template #tableHeader>
         <tr class="table-header">
-            <th class="table-header-cell" *ngFor="let row of headerContent">{{row.label}}</th>
+            <th class="table-header-cell" *ngFor="let col of headerContent"
+                [ngClass]="{'fixLeft': col.key == fixLeft.key && fixLeft.side === 'left', 'fixRight': col.key == fixRight.key && fixRight.side === 'right'}">
+                {{col.label}}</th>
         </tr>
     </ng-template>
     <ng-template #tableContent let-row="row">
         <tr [appSelectRow]="row" class="table-row" [ngClass]="{'selected': row.isSelected === true}">
-            <td *ngFor="let col of headerContent" class="table-body-cell">{{row[col.key]}}</td>
+            <td *ngFor="let col of headerContent" class="table-body-cell"
+                [ngClass]="{'fixLeft': col.key == fixLeft.key && fixLeft.side === 'left', 'fixRight': col.key == fixRight.key && fixRight.side === 'right'}">
+                {{row[col.key]}}</td>
         </tr>
     </ng-template>
 </app-table>
