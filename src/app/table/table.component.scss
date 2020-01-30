@@ -1,12 +1,13 @@
 .with-scroll {
     height: 300px;
     margin: auto;
-    width: 500px;
+    width: 80%;
     overflow: auto;
     white-space: nowrap;
 }
 
 .c9-table .table-header th {
+    z-index: 2;
     position: sticky;
     top: 0;
     background-color: rgb(163, 163, 163);
@@ -18,27 +19,6 @@
 
 .selected {
     background-color: rgb(221, 221, 221);
-}
-
-/* td:first-child,
-th:first-child {
-    position: sticky;
-    left: 0;
-    z-index: 1;
-    background-color: gray;
-}
-
-td:last-child,
-th:last-child {
-    position: sticky;
-    right: 0;
-    z-index: 1;
-    background-color: gray;
-} */
-
-th:first-child,
-th:last-child {
-    z-index: 2;
 }
 
 .fixLeft {
