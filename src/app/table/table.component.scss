@@ -7,6 +7,7 @@
 }
 
 .c9-table .table-header th {
+    z-index: 2;
     position: sticky;
     top: 0;
     background-color: rgb(163, 163, 163);
@@ -18,4 +19,18 @@
 
 .selected {
     background-color: rgb(221, 221, 221);
+}
+
+.fix-left {
+    position: sticky;
+    left: 0;
+    z-index: 1;
+    background-color: gray;
+}
+
+.fix-right {
+    position: sticky;
+    right: 0;
+    z-index: 1;
+    background-color: gray;
 }
