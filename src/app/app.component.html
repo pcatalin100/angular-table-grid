@@ -3,16 +3,25 @@
 <app-table [tableHeader]="tableHeader" [tableContent]="tableContent" [content]="content">
     <ng-template #tableHeader>
         <tr class="table-header">
-            <th class="table-header-cell" *ngFor="let col of headerContent"
-                [ngClass]="{'fix-left': col.key == fixLeft.key && fixLeft.side === 'left', 'fix-right': col.key == fixRight.key && fixRight.side === 'right'}">
+            <th class="table-header-cell" *ngFor="let col of headerContent" [appFixTableHeader]="col" [appFixTableHeaderSide]="fixedColumns">
                 {{col.label}}</th>
+        </tr>
+        <tr class="filter-field">
+            <th *ngFor="let col of headerContent" [appFixTableHeader]="col" [appFixTableHeaderSide]="fixedColumns">
+                <input type="text" class="form-control" (keyup)="filterTable($event, col.key)">
+            </th>
         </tr>
     </ng-template>
     <ng-template #tableContent let-row="row">
         <tr [appSelectRow]="row" class="table-row" [ngClass]="{'selected': row.isSelected === true}">
-            <td *ngFor="let col of headerContent" class="table-body-cell"
-                [ngClass]="{'fix-left': col.key == fixLeft.key && fixLeft.side === 'left', 'fix-right': col.key == fixRight.key && fixRight.side === 'right'}">
+            <td appSetSize [appFixTableColumn]="col" [appFixTableColumnSide]="fixedColumns" *ngFor="let col of headerContent" class="table-body-cell">
                 {{row[col.key]}}</td>
         </tr>
     </ng-template>
 </app-table>
+
+<select name="" id="">
+    <option value="">1</option>
+    <option value="">2</option>
+    <option value="">3</option>
+</select>

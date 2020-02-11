@@ -1,15 +1,28 @@
 .with-scroll {
-    height: 300px;
     margin: auto;
-    width: 80%;
+    width: 60%;
     overflow: auto;
     white-space: nowrap;
+    height: 300px;
 }
 
-.c9-table .table-header th {
-    z-index: 2;
+table {
+    table-layout: fixed;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.table-header th {
     position: sticky;
     top: 0;
+    background-color: rgb(163, 163, 163);
+    overflow: hidden;
+}
+
+.filter-field th {
+    position: sticky;
+    top: 51px;
+    z-index: 2;
     background-color: rgb(163, 163, 163);
 }
 
@@ -23,14 +36,17 @@
 
 .fix-left {
     position: sticky;
-    left: 0;
     z-index: 1;
     background-color: gray;
 }
 
+th.fix-left,
+th.fix-right {
+    z-index: 3;
+}
+
 .fix-right {
     position: sticky;
-    right: 0;
     z-index: 1;
     background-color: gray;
 }

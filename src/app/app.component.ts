@@ -1,4 +1,4 @@
-import { Component, ViewChild, Directive, HostListener, Input } from '@angular/core';
+import { Component, ViewChild, Directive, HostListener, Input, ElementRef } from '@angular/core';
 import { IHeader, IContent } from './interfaces/table';
 import { GetDataService } from './get-data.service';
 import { TableComponent } from './table/table.component';
@@ -13,24 +13,37 @@ export class AppComponent {
   isActive: boolean = true;
   title = 'table-project';
   headerContent: IHeader[];
-  content: IContent[];
-  fixLeft = {
-    key: "name",
-    side: "left"
-  };
-  fixRight = {
-    key: "country",
-    side: "right"
-  }
+  content: IContent[] = [];
+  contentBackup: IContent[];
+  fixedColumns = [
+    {
+      key: "country",
+      side: "right"
+    },
+    {
+      key: "type",
+      side: "right"
+    },
+    {
+      key: "color",
+      side: "left"
+    },
+    {
+      key: "name",
+      side: "left"
+    },
+  ]
   constructor(private getData: GetDataService) {
 
   }
   ngOnInit(): void {
     this.getData.getHeaderContent().subscribe((res: IHeader[]) => {
       this.headerContent = res;
+      this.filterArray();
     });
     this.getData.getTableContent().subscribe((res: IContent[]) => {
       this.content = res;
+      this.contentBackup = this.content;
     });
   }
   removeRows() {
@@ -40,6 +53,68 @@ export class AppComponent {
   }
   showDetails() {
     this.isActive = !this.isActive;
+  }
+  filterArray() {
+    let leftColumns = [];
+    let rightColumns = [];
+    this.fixedColumns.forEach(element => {
+      this.headerContent.forEach((item, i) => {
+        if (item.key === element.key && element.side === "left") {
+          this.headerContent.splice(this.headerContent.indexOf(item), 1)
+          leftColumns.push(item);
+        } else if (item.key === element.key && element.side === "right") {
+          this.headerContent.splice(this.headerContent.indexOf(item), 1)
+          rightColumns.push(item);
+        }
+      });
+    });
+    this.setPosition(leftColumns);
+    this.setPosition(rightColumns);
+  }
+
+  setPosition(columns) {
+    for (let i = columns.length - 1; i >= 0; i--) {
+      if (i === columns.length - 1) {
+        columns[i].position = 0;
+      } else {
+        columns[i].position = columns[i + 1].position + columns[i + 1].width + "px";
+      }
+    }
+    this.addToArray(columns);
+  }
+
+  addToArray(columns) {
+    this.fixedColumns.forEach(element => {
+      switch (element.side) {
+        case "left":
+          columns.forEach(column => {
+            if (column.key === element.key) {
+              column.fixedSide = "left";
+              this.headerContent.unshift(column);
+            }
+          });
+          break;
+        case "right":
+          columns.forEach(column => {
+            if (column.key === element.key) {
+              column.fixedSide = "right";
+              this.headerContent.push(column);
+            }
+          });
+        default:
+          break;
+      }
+    });
+  }
+  filterTable(e, key){
+    let value = e.target.value;
+    if(value !== ""){
+      this.content = this.contentBackup.filter(item => {
+        return item[key].toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) !== -1;
+      });
+    } else {
+      this.content = this.contentBackup;
+    }
   }
 }
 
