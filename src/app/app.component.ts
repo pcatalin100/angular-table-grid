@@ -10,11 +10,16 @@ import { TableComponent } from './table/table.component';
 })
 export class AppComponent {
   @ViewChild(TableComponent, { static: false }) child: TableComponent;
+  dropDownItems = [];
+  filterBy = [];
+  filters: any = {};
   isActive: boolean = true;
   title = 'table-project';
   headerContent: IHeader[];
   content: IContent[] = [];
   contentBackup: IContent[];
+  defaultOption = "selectedDefaultOption";
+  selectedItems = "Filter by name";
   fixedColumns = [
     {
       key: "country",
@@ -40,10 +45,18 @@ export class AppComponent {
     this.getData.getHeaderContent().subscribe((res: IHeader[]) => {
       this.headerContent = res;
       this.filterArray();
+      this.headerContent.forEach(element => {
+        if (element.key === "name") {
+          this.filters[element.key] = [];
+        } else {
+          this.filters[element.key] = "";
+        }
+      });
     });
     this.getData.getTableContent().subscribe((res: IContent[]) => {
       this.content = res;
       this.contentBackup = this.content;
+      this.getDropDownItem();
     });
   }
   removeRows() {
@@ -106,15 +119,55 @@ export class AppComponent {
       }
     });
   }
-  filterTable(e, key){
+  getFilterData(e, key) {
     let value = e.target.value;
-    if(value !== ""){
-      this.content = this.contentBackup.filter(item => {
-        return item[key].toLocaleLowerCase().indexOf(value.toLocaleLowerCase()) !== -1;
-      });
-    } else {
-      this.content = this.contentBackup;
+    this.filters[key] = value;
+    this.filterTable();
+  }
+  filterTable() {
+    this.selectedItems = "Filter by name";
+    this.content = this.contentBackup;
+    let keys = Object.keys(this.filters);
+    keys.forEach(key => {
+      if (key === 'name' && this.filters[key].length > 0) {
+        this.content = this.content.filter(item => {
+          if (this.filterBy.includes(item.name)) {
+            return item;
+          }
+        });
+        if (this.filterBy.length > 2) {
+          this.selectedItems = `${this.filterBy.length} selected items`
+        }
+        else {
+          this.selectedItems = this.filterBy.toString();
+        }
+      } else if (key !== 'name' && this.filters[key] !== '') {
+        this.content = this.content.filter(item => {
+          return item[key].toLocaleLowerCase().indexOf(this.filters[key].toLocaleLowerCase()) !== -1;
+        });
+      }
+    });
+  }
+  getDropDownItem() {
+    let arr = this.content.map(item => {
+      return item.name
+    });
+    this.dropDownItems = arr.filter((item, i) => {
+      if (arr.indexOf(item) === i) {
+        return item;
+      }
+    }).map(item => { return { key: item, isSelected: false } });
+  }
+  addSelectedValues(option) {
+    if (!option.isSelected) {
+      option.isSelected = !option.isSelected;
+      this.filters.name.push(option.key);
+    } else if (option.isSelected) {
+      option.isSelected = !option.isSelected;
+      this.filters.name = this.filters.name.filter(item => item !== option.key);
     }
+    event.target["selectedIndex"] = 0;
+    this.filterTable();
   }
 }
 

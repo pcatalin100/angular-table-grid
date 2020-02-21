@@ -8,7 +8,14 @@
         </tr>
         <tr class="filter-field">
             <th *ngFor="let col of headerContent" [appFixTableHeader]="col" [appFixTableHeaderSide]="fixedColumns">
-                <input type="text" class="form-control" (keyup)="filterTable($event, col.key)">
+                <div class="form-group select-div" *ngIf="col.key ==='name'">
+                    <select name="" class="form-control" (ngModelChange)="addSelectedValues($event)" [ngModel]="defaultOption">
+                        <option disabled hidden value="selectedDefaultOption">{{selectedItems}}</option>
+                        <option [ngValue]="option" *ngFor="let option of dropDownItems" [ngClass]="{'selected-option': option.isSelected}">
+                            {{option.key}}</option>
+                    </select>
+                </div>
+                <input type="text" *ngIf="col.key !=='name'" class="form-control" (keyup)="getFilterData($event, col.key)">
             </th>
         </tr>
     </ng-template>
@@ -19,9 +26,3 @@
         </tr>
     </ng-template>
 </app-table>
-
-<select name="" id="">
-    <option value="">1</option>
-    <option value="">2</option>
-    <option value="">3</option>
-</select>
