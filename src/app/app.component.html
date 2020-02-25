@@ -3,11 +3,11 @@
 <app-table [tableHeader]="tableHeader" [tableContent]="tableContent" [content]="content">
     <ng-template #tableHeader>
         <tr class="table-header">
-            <th class="table-header-cell" *ngFor="let col of headerContent" [appFixTableHeader]="col" [appFixTableHeaderSide]="fixedColumns">
+            <th class="table-header-cell" *ngFor="let col of headerContent" [appFixTableHeader]="col">
                 {{col.label}}</th>
         </tr>
-        <tr class="filter-field">
-            <th *ngFor="let col of headerContent" [appFixTableHeader]="col" [appFixTableHeaderSide]="fixedColumns">
+        <tr appFilterRow>
+            <th *ngFor="let col of headerContent" [appFixTableHeader]="col">
                 <div class="form-group select-div" *ngIf="col.key ==='name'">
                     <select name="" class="form-control" (ngModelChange)="addSelectedValues($event)" [ngModel]="defaultOption">
                         <option disabled hidden value="selectedDefaultOption">{{selectedItems}}</option>
@@ -21,7 +21,7 @@
     </ng-template>
     <ng-template #tableContent let-row="row">
         <tr [appSelectRow]="row" class="table-row" [ngClass]="{'selected': row.isSelected === true}">
-            <td appSetSize [appFixTableColumn]="col" [appFixTableColumnSide]="fixedColumns" *ngFor="let col of headerContent" class="table-body-cell">
+            <td [appFixTableColumn]="col" *ngFor="let col of headerContent" class="table-body-cell">
                 {{row[col.key]}}</td>
         </tr>
     </ng-template>

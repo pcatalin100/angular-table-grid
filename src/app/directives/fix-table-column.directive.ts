@@ -4,8 +4,8 @@ import { Directive, Input, Renderer2, ElementRef } from '@angular/core';
   selector: '[appFixTableColumn]'
 })
 export class FixTableColumnDirective {
-  @Input('appFixTableColumn') col: any;
-  @Input('appFixTableColumnSide') side: any;
+  @Input('appFixTableColumn') column: any;
+  //@Input('fixedSide') side: any;
   constructor(
     private renderer: Renderer2,
     private elmRef: ElementRef
@@ -13,13 +13,13 @@ export class FixTableColumnDirective {
   ngOnInit(): void {
     //Called after the constructor, initializing input properties, and the first call to ngOnChanges.
     //Add 'implements OnInit' to the class.
-    let currentElement = this.elmRef.nativeElement;
-    if(this.col.fixedSide === "left"){
+    const currentElement = this.elmRef.nativeElement;
+    if(this.column.fixedSide === "left"){
       this.renderer.addClass(currentElement, "fix-left");
-      this.renderer.setStyle(currentElement, "left", this.col.position)
-    } else if (this.col.fixedSide === "right"){
+      this.renderer.setStyle(currentElement, "left", this.column.position)
+    } else if (this.column.fixedSide === "right"){
       this.renderer.addClass(currentElement, "fix-right");
-      this.renderer.setStyle(currentElement, "right", this.col.position)
+      this.renderer.setStyle(currentElement, "right", this.column.position)
     }
 
   }
