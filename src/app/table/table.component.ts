@@ -1,4 +1,5 @@
-import { Component, OnInit, Input, ViewEncapsulation, ElementRef, Renderer2 } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { IContent } from '../interfaces/table';
 @Component({
   selector: 'app-table',
   templateUrl: './table.component.html',
@@ -8,9 +9,8 @@ import { Component, OnInit, Input, ViewEncapsulation, ElementRef, Renderer2 } fr
 export class TableComponent implements OnInit {
   @Input() tableHeader;
   @Input() tableContent;
-  @Input() content;
-  constructor(private renderer: Renderer2, private element: ElementRef) { }
+  @Input() content: IContent[];
+  constructor() { }
 
-  ngOnInit() {
-   }
+  ngOnInit() { }
 }

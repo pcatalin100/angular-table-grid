@@ -5,7 +5,6 @@ import { Directive, Input, Renderer2, ElementRef } from '@angular/core';
 })
 export class appFixTableHeaderDirective {
   @Input('appFixTableHeader') col: any;
-  //@Input('appFixTableHeaderSide') side: any;
   constructor(
     private renderer: Renderer2,
     private elmRef: ElementRef

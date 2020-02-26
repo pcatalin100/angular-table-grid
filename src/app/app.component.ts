@@ -1,7 +1,6 @@
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { IHeader, IContent } from './interfaces/table';
 import { GetDataService } from './get-data.service';
-import { TableComponent } from './table/table.component';
 import { FilterTableClass } from './table-functions';
 import { SetColumnsClass } from './table-functions';
 
@@ -11,7 +10,6 @@ import { SetColumnsClass } from './table-functions';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  //@ViewChild(TableComponent, { static: false }) child: TableComponent;
   dropDownItems = [];
   filterBy = [];
   filters: any = {};
