@@ -3,15 +3,25 @@
 <app-table [tableHeader]="tableHeader" [tableContent]="tableContent" [content]="content">
     <ng-template #tableHeader>
         <tr class="table-header">
-            <th class="table-header-cell" *ngFor="let col of headerContent"
-                [ngClass]="{'fix-left': col.key == fixLeft.key && fixLeft.side === 'left', 'fix-right': col.key == fixRight.key && fixRight.side === 'right'}">
+            <th class="table-header-cell" *ngFor="let col of headerContent" [appFixTableHeader]="col">
                 {{col.label}}</th>
+        </tr>
+        <tr appFilterRow>
+            <th *ngFor="let col of headerContent" [appFixTableHeader]="col">
+                <div class="form-group select-div" *ngIf="col.key ==='name'">
+                    <select name="" class="form-control" (ngModelChange)="addSelectedValues($event)" [ngModel]="defaultOption">
+                        <option disabled hidden value="selectedDefaultOption">{{selectedItems}}</option>
+                        <option [ngValue]="option" *ngFor="let option of dropDownItems" [ngClass]="{'selected-option': option.isSelected}">
+                            {{option.key}}</option>
+                    </select>
+                </div>
+                <input type="text" *ngIf="col.key !=='name'" class="form-control" (keyup)="getFilterData($event, col.key)">
+            </th>
         </tr>
     </ng-template>
     <ng-template #tableContent let-row="row">
         <tr [appSelectRow]="row" class="table-row" [ngClass]="{'selected': row.isSelected === true}">
-            <td *ngFor="let col of headerContent" class="table-body-cell"
-                [ngClass]="{'fix-left': col.key == fixLeft.key && fixLeft.side === 'left', 'fix-right': col.key == fixRight.key && fixRight.side === 'right'}">
+            <td [appFixTableColumn]="col" *ngFor="let col of headerContent" class="table-body-cell">
                 {{row[col.key]}}</td>
         </tr>
     </ng-template>

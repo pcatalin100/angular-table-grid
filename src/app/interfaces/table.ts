@@ -1,15 +1,18 @@
 export interface IHeader {
     key: string;
-    label: string
+    label: string;
+    width?: number;
+    position?: string;
+    fixedSide?: string;
 }
 
 export interface IContent {
-    id: number;
+    id: string;
     name: string;
     type: string;
     color: string;
     fuel: string;
     country: string;
-    horsePower: number;
+    horsePower: string;
     isSelected: boolean
 }
